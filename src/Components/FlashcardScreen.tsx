@@ -87,7 +87,14 @@ export default function FlashcardScreen({ setName, cefrLevel, onBack }: Flashcar
                             {current.romanization && <div className="romanization">{current.romanization}</div>}
                         </div>
                         <div className="card-back">
-                            <div className="meaning">{current.english_translation}</div>
+                            <div className="meaning">
+                                {current.english_translation
+                                    .split(';') // split by semicolon
+                                    .map((t, i) => (
+                                        <div key={i}>{t.trim()}</div> // trim spaces and display on new line
+                                    ))
+                                }
+                            </div>
                             {current.example_sentence_native && (
                                 <div className="example">
                                     <div>{current.example_sentence_native}</div>
@@ -95,6 +102,7 @@ export default function FlashcardScreen({ setName, cefrLevel, onBack }: Flashcar
                                 </div>
                             )}
                         </div>
+
                     </div>
                 </div>
             )}
