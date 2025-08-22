@@ -22,6 +22,8 @@ export default function FlashcardScreen({ setName, cefrLevel, onBack }: Flashcar
     const [flipped, setFlipped] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    const CEFR_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+
     useEffect(() => {
         setError(null);
         setFlipped(false);
@@ -32,7 +34,15 @@ export default function FlashcardScreen({ setName, cefrLevel, onBack }: Flashcar
                 return res.json();
             })
             .then((data: Word[]) => {
-                const filtered = cefrLevel ? data.filter((w) => w.cefr_level === cefrLevel) : data;
+                let filtered: Word[];
+                if (cefrLevel) {
+                    const levelIndex = CEFR_LEVELS.indexOf(cefrLevel);
+                    const allowedLevels = CEFR_LEVELS.slice(0, levelIndex + 1); // cumulative levels
+                    filtered = data.filter((w) => w.cefr_level && allowedLevels.includes(w.cefr_level));
+                } else {
+                    filtered = data;
+                }
+
                 const finalWords = Array.isArray(filtered) ? filtered : [];
                 setWords(finalWords);
 
@@ -53,13 +63,10 @@ export default function FlashcardScreen({ setName, cefrLevel, onBack }: Flashcar
     };
 
     const handleNext = () => {
-        // Temporarily hide card content
         setFlipped(false);
-
-        // Wait for the flip animation to finish before showing new card
         setTimeout(() => {
             setIdx(nextRandomIndex());
-        }, 300); // match with CSS transition duration (0.6s / 2)
+        }, 300);
     };
 
     const current = words[idx];
