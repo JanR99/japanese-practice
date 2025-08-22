@@ -37,3 +37,22 @@
     color: #000;
     font-weight: 700;
 }
+
+.reset-button {
+    background: #ffd54f;
+    color: #000;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.reset-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    background: #ffd740;
+}

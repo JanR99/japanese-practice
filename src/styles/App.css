@@ -63,3 +63,32 @@ h1 {
   margin-bottom: 25px;
   transition: all 0.3s ease;
 }
+
+.progress-bar-container {
+  width: 80%;
+  height: 24px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 12px;
+  margin: 20px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(135deg, #84fab0, #8fd3f4);
+  border-radius: 12px 0 0 12px;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  font-weight: 700;
+  color: #333;
+  line-height: 24px;
+}
+

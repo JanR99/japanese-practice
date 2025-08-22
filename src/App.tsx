@@ -22,7 +22,7 @@ export default function App() {
 
     return (
         <div className="App">
-            <h1>Japanese Practice</h1>
+            {!selectedSet && <h1>Japanese Practice</h1>}
             {!selectedSet && <StartScreen onSelectSet={handleSetSelect} />}
             {selectedSet && <FlashcardScreen setName={selectedSet} cefrLevel={cefrLevel} onBack={handleBack} />}
         </div>
