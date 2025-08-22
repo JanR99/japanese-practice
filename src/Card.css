@@ -1,0 +1,78 @@
+.card {
+    width: 280px;
+    height: 280px;
+    margin: 30px auto;
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    pointer-events: none;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-front {
+    opacity: 1;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+.card.flipped .card-front {
+    opacity: 0;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    opacity: 0;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+}
+
+.card.flipped .card-back {
+    opacity: 1;
+}
+
+.glyph {
+    font-size: 80px;
+    font-weight: bold;
+    color: #333;
+}
+
+.romanization {
+    font-size: 22px;
+    color: #555;
+    margin-top: 8px;
+}
+
+.meaning {
+    font-size: 26px;
+    font-weight: 700;
+    color: #222;
+}
+
+.example {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.3;
+}
