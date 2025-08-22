@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import StartScreen, { SetName } from './StartScreen';
-import FlashcardScreen from './FlashcardScreen';
-import './App.css';
-import './Button.css';
-import './Card.css';
-import './Popup.css';
+import StartScreen, { SetName } from './Components/StartScreen';
+import FlashcardScreen from './Components/FlashcardScreen';
+import './styles/App.css';
+import './styles/Button.css';
+import './styles/Card.css';
+import './styles/Popup.css';
 
 export default function App() {
     const [selectedSet, setSelectedSet] = useState<SetName | null>(null);
